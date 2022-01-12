@@ -17,13 +17,13 @@ my_card = {"Tarjeta": "ABC",
           "Cargos": 210}
 
 
-ejemplo = 'genera'
+ejemplo = 'json'
 
 if ejemplo == 'card':
-    d_card1 = card_1.captura_nueva_deuda()
+    #d_card1 = card_1.captura_nueva_deuda()
     #d_card2 = card_2.captura_nueva_deuda()
 
-    #card_1.pagos_multiples([200, 400, 300, 400, 800, 500, 1000, 400])
+    card_1.pagos_multiples([200, 400, 300, 400, 800, 500, 1000, 400])
     #card_1.generar_reporte()
     #card_2.__str__()
     #print(card_3.get_card_name())
@@ -52,3 +52,9 @@ elif ejemplo == 'genera':
         cards = [c.get_card_name() for c in Users[k].get_cards()]
         print(cards)
         #print(Users[k]['short_name'])
+elif ejemplo == 'imprime':
+    L = [card_1, card_2]
+    card_1.imprime_reportes(L)
+elif ejemplo == 'recurrente':
+    card_1.pago_recurrente()
+

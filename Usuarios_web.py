@@ -43,10 +43,6 @@ def tarjeta(name, card):
         reporte = ""
     return render_template("tarjeta.html", usuario=str_card, values=values, reporte=reporte)
 
-@app.route("/admin")
-def admin():
-    return redirect(url_for("home"))
-
 if __name__ == "__main__":
     n_user = random.randint(1, 8)  # Número aleatorio de usuarios
     app.config['Users'] = Genera_usuarios(n_user)

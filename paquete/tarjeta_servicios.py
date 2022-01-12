@@ -31,7 +31,7 @@ class tarjeta_de_servicios(tarjeta_credito):
         if 'charges' in card:
             card['charges'] = 0
 
-        self.generar_reporte(card)
+        self.generar_reporte(True, card)
 
     @decorador
     def pagos_multiples(self, *args):
@@ -44,4 +44,4 @@ class tarjeta_de_servicios(tarjeta_credito):
         card = args[0] if len(args) else self.captura_nueva_deuda()
         print(f"\nMes 1: ")
         card = self.captura_nueva_deuda(card)
-        self.generar_reporte(card)
+        self.generar_reporte(True, card)

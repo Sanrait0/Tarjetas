@@ -133,9 +133,9 @@ class tarjeta_credito:
         for ind, card in enumerate(cards):
             print(f"\nTarjeta {ind + 1}:")
             if isinstance(card, dict):
-                self.generar_reporte(card)
+                self.generar_reporte(True, card)
             else:
-                self.generar_reporte(card.captura_nueva_deuda())
+                self.generar_reporte(True, card.captura_nueva_deuda())
 
     def pago_recurrente(self, *args):
         """
@@ -149,14 +149,14 @@ class tarjeta_credito:
             card['charges'] = 0
 
         print(f"\nMes 0: ")
-        self.generar_reporte(card)
+        self.generar_reporte(True, card)
 
         i = 0
         while card['new_debt'] > 0:
             print(f"\nMes {i + 1}: ")
             card['debt'] = card['new_debt']
             card = self.captura_nueva_deuda(card)
-            self.generar_reporte(card)
+            self.generar_reporte(True, card)
             i += 1
 
 
@@ -170,14 +170,14 @@ class tarjeta_credito:
         print(f"\nMes 1: ")
         card['payment'] = pagos[0]
         card = self.captura_nueva_deuda(card)
-        self.generar_reporte(card)
+        self.generar_reporte(True, card)
 
         for i, p in enumerate(pagos[1:]):
             print(f"\nMes {i + 2}: ")
             card['payment'] = p
             card['debt'] = card['new_debt']
             card = self.captura_nueva_deuda(card)
-            self.generar_reporte(card)
+            self.generar_reporte(True, card)
             if card['new_debt'] == 0:
                 break
 
